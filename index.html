@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
     <title>Document</title>
+    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <style>
@@ -130,6 +131,19 @@
                 function eqfeed_callback(results) {
                     map.data.addGeoJson(results);
                 }
+
+                var config = {
+                    apiKey: "AIzaSyBufRELsSOVSrguYEl3zMS_yDbjg6XVLos",
+                    authDomain: "project1-1520099791989.firebaseapp.com",
+                    databaseURL: "https://project1-1520099791989.firebaseio.com",
+                    projectId: "project1-1520099791989",
+                    storageBucket: "",
+                    messagingSenderId: "778829038115"
+                };
+                firebase.initializeApp(config);
+
+                var database = firebase.database();
+
                 $("#address-btn").on("click", function (event) {
                     event.preventDefault();
                     $("#map").addClass("shake");
@@ -142,6 +156,12 @@
                     $("#street-address").val("");
                     $("#city-input").val("");
                     $("#state-input").val("");
+
+                    database.ref().push({
+                        street: streetAdd,
+                        city: cityAdd,
+                        state: stateAdd
+                    });
         
                     var queryURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + street1 + ",+" + city1 + ",+" + stateAdd + "&key=AIzaSyBRnBbZdpThRUpOF47JaGuMIrKZMt38SSU";
         
@@ -175,7 +195,7 @@
            //         map: map
            //       });
             //    }
-          //    }
+          //                  
             </script>
             <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBacf-yGvhzUPn4NA8QQrUHcX_4FG5yNM&content_copy&callback=initMap">
             </script>
