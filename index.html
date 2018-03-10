@@ -48,15 +48,15 @@
                         <form>
                             <div class="form-group">
                                 <label for="street-address">Street Address</label>
-                                <input class="form-control" id="street-address" type="text">
+                                <input class="form-control" id="street-address" type="text" placeholder="10011 Centennial Parkway">
                             </div>
                             <div class="form-group">
                                 <label for="city-input">City</label>
-                                <input class="form-control" id="city-input" type="text">
+                                <input class="form-control" id="city-input" type="text" placeholder="Sandy">
                             </div>
                             <div class="form-group">
                                 <label for="state-input">State</label>
-                                <input class="form-control" id="state-input" type="text">
+                                <input class="form-control" id="state-input" type="text" placeholder="UT">
                             </div>
                             <button class="btn btn-primary" id="address-btn" type="submit">Submit</button>
                         </form>
@@ -147,8 +147,8 @@
                 function getCircle(magnitude) {
                     return {
                         path: google.maps.SymbolPath.CIRCLE,
-                        fillColor: 'red',
-                        fillOpacity: .2,
+                        fillColor: 'brown',
+                        fillOpacity: 1,
                         scale: Math.pow(2, magnitude) / 2,
                         strokeColor: 'white',
                         strokeWeight: .5
