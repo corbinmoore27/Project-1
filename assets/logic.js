@@ -49,7 +49,7 @@ var database = firebase.database();
 $(".btn").on("click", function (event) {
     event.preventDefault();
     $('form').valid();
-    $("#history").empty();
+		$("#history").empty();
     $("#map").addClass("shake").one("webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend", function () {
         $(this).removeClass("shake");
     })
@@ -61,7 +61,10 @@ $(".btn").on("click", function (event) {
     $("#street_address").val("");
     $("#city_input").val("");
     $("#state_input").val("");
-    database.ref().push({
+		if (cityAdd === "" || stateAdd ==="") {
+			return
+		};
+		database.ref().push({
         street: streetAdd,
         city: cityAdd,
         state: stateAdd
